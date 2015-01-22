@@ -113,11 +113,11 @@ while command != "exit"
   puts "exit".rjust(6)
   command = gets.chomp.downcase
   if command == "add"
-    puts "you said #{command}"
+    # TODO ADD FUNCTION
   elsif command == "update"
-    puts "you said #{command}"
+    # TODO UPDATE FUNCTION
   elsif command == "remove"
-    puts "you said #{command}"
+    # TODO REMOVE FUNCTION
   elsif command == "print"
     puts "-"*45
     printf("| %-30s| %-10s|\n", "Items", "Quantity")
