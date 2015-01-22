@@ -1,5 +1,4 @@
-
-# HOMEWORK
+# ORIGINAL HOMEWORK
 # James Matchett
 # 1/19/15
 #
@@ -78,10 +77,28 @@
 #     puts "add, check, or delete something from your inventory."
 #   end
 # end
+
+####### PART 2 ##########
+
+# Ricardo and James
+# 1/21/15
+# User can add or remove items
+# User can set the current numbers of any of the items added
+# User can print out in table structure all items and count
+# User can zero out item will remove
+# User is not able to put in nonsense data
+# User get a boot script
+# Not be able to break it
+#
+# Can use hashes
+#
+# push to github and push it up
+
 command = nil
 inventory = {"cars"=>10,"bubbles"=>5,"sketches"=>100,"time"=>3,}
+
+puts "Welcome to Inventory System 2.0"
 while command != "exit"
-  puts "Welcome to Inventory System 2.0"
   puts "Please input one of the following commands"
   print "add"
   print "|".rjust(3)
@@ -90,6 +107,8 @@ while command != "exit"
   print "remove".rjust(8)
   print "|".rjust(3)
   print "print".rjust(7)
+  print "|".rjust(3)
+  print "help".rjust(6)
   print "|".rjust(3)
   puts "exit".rjust(6)
   command = gets.chomp.downcase
@@ -100,11 +119,29 @@ while command != "exit"
   elsif command == "remove"
     puts "you said #{command}"
   elsif command == "print"
-    printf("|%-15s|%6s|\n", "Item", "Count")
+    puts "-"*45
+    printf("| %-30s| %-10s|\n", "Items", "Quantity")
+    puts "-"*45
     inventory.each do |item, count|
-      printf("|%-15s|%6d|\n", item, count)
+      printf("| %-30s| %-10d|\n", item, count)
     end
+    puts "-"*45
+  elsif command == "help"
+    puts "A brief explaination of the available commands."
+    puts "-"*63
+    printf("| %-10s| %-50s|\n", "Commands", "Explaination")
+    puts "-"*63
+    printf("| %-10s| %-50s|\n", "Add", "Allows you to add items to your inventory")
+    printf("| %-10s| %-50s|\n", "Update", "Change the quantity of an item in your inventory")
+    printf("| %-10s| %-50s|\n", "Remove", "Remove an item from your inventory")
+    printf("| %-10s| %-50s|\n", "Print", "Print a table of all the items in your inventory")
+    printf("| %-10s| %-50s|\n", "Help", "Display this list of command meanings")
+    printf("| %-10s| %-50s|\n", "Exit", "Exit the program")
+    puts "-"*63
+  elsif command == "exit"
   else
+    puts "That is not a command I recognize."
+    sleep(1)
   end
 end
   
