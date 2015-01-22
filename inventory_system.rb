@@ -99,6 +99,7 @@ inventory = {"cars"=>10,"bubbles"=>5,"sketches"=>100,"time"=>3,}
 
 puts "Welcome to Inventory System 2.0"
 while command != "exit"
+  puts "\n"
   puts "Please input one of the following commands"
   print "add"
   print "|".rjust(3)
@@ -111,6 +112,7 @@ while command != "exit"
   print "help".rjust(6)
   print "|".rjust(3)
   puts "exit".rjust(6)
+  puts "\n"
   command = gets.chomp.downcase
   if command == "add"
     # TODO ADD FUNCTION
@@ -119,14 +121,21 @@ while command != "exit"
   elsif command == "remove"
     # TODO REMOVE FUNCTION
   elsif command == "print"
-    puts "-"*45
-    printf("| %-30s| %-10s|\n", "Items", "Quantity")
-    puts "-"*45
-    inventory.each do |item, count|
-      printf("| %-30s| %-10d|\n", item, count)
+    if inventory.empty? == true
+      puts "You have no items in your inventory, please add some first"
+    else
+      puts "\n"
+      puts "You have the following items in your inventory"
+      puts "-"*45
+      printf("| %-30s| %-10s|\n", "Items", "Quantity")
+      puts "-"*45
+      inventory.each do |item, count|
+        printf("| %-30s| %-10d|\n", item, count)
+      end
+      puts "-"*45
     end
-    puts "-"*45
   elsif command == "help"
+    puts "\n"
     puts "A brief explaination of the available commands."
     puts "-"*63
     printf("| %-10s| %-50s|\n", "Commands", "Explaination")
