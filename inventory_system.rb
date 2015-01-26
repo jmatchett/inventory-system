@@ -95,6 +95,8 @@
 # push to github and push it up
 
 command = nil
+item_name = nil
+item_count = nil
 inventory = {"cars"=>10,"bubbles"=>5,"sketches"=>100,"time"=>3,}
 
 puts "Welcome to Inventory System 2.0"
@@ -115,11 +117,50 @@ while command != "exit"
   puts "\n"
   command = gets.chomp.downcase
   if command == "add"
-    # TODO ADD FUNCTION
+    puts "What item would you like to add?"
+    item_name = gets.chomp.downcase
+
+    if inventory.has_key?(item_name) == false
+      puts "How many " + item_name + " would you like to add?"
+      item_count = gets.chomp.downcase.to_i
+
+      if item_count > 0
+        inventory[item_name] = item_count
+        puts item_count.to_s + " " + item_name + " have been added to your inventory."
+      else
+        puts "Item count must be greater than 0"
+      end
+    else
+      puts "Item already exists.  Please use another option to manipulate an existing item."
+    end 
   elsif command == "update"
-    # TODO UPDATE FUNCTION
+    puts "What item count would you like to update?"
+    item_name = gets.chomp.downcase
+
+    if inventory.has_key?(item_name) 
+      puts "The current invetory for " + item_name + " is " + inventory[item_name].to_s + ".  What would you like to change it to?"
+      item_count = gets.chomp.downcase.to_i
+
+      if item_count > 0
+        inventory[item_name] = item_count
+        puts item_name + " has been updated to " + item_count.to_s + " in your inventory."
+      else
+        puts "Item count must be greater than 0"
+      end
+    else
+      puts " Item does not exist in inventory."
+    end
   elsif command == "remove"
-    # TODO REMOVE FUNCTION
+    puts "What item would you like to remove?"
+    item_name = gets.chomp.downcase
+
+    if inventory.has_key?(item_name) 
+      inventory.delete(item_name)
+      puts item_name + " has been removed from your inventory."
+    else
+      puts " Item does not exist in inventory."
+    end
+
   elsif command == "print"
     if inventory.empty? == true
       puts "You have no items in your inventory, please add some first"
